@@ -1,0 +1,467 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.02.22"
+    },
+    "host": "117.3.36.11:8000",
+    "basePath": "/api/v1",
+    "tags": [
+        {
+            "name": "Users",
+            "description": "Everything about User"
+        },
+        {
+            "name": "Auths",
+            "description": "Everything about Authenticate"
+        },
+        {
+            "name": "Orders",
+            "description": "Everything about Order"
+        },
+        {
+            "name": "Reviews",
+            "description": "Everything about Review"
+        }
+    ],
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Create new user",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "first_name",
+                        "description": "First Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "last_name",
+                        "description": "Last Name",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "required": true,
+                        "description": "Email",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "required": true,
+                        "type": "string",
+                        "description": "Password min 6 characters"
+                    }
+                ]
+            }
+        },
+        "/users/me": {
+            "get": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Get user profile",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/users/verify": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Verify Email",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "token",
+                        "in": "formData",
+                        "description": "Confirmation code",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/users/change-avatar": {
+            "post": {
+                "tags": [
+                    "Users"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "summary": "Change Avatar",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "description": "Avatar file",
+                        "type": "file"
+                    }
+                ]
+            }
+        },
+        "/users/change-password": {
+            "put": {
+                "tags": [
+                    "Users"
+                ],
+                "summary": "Change Password",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "old_password",
+                        "description": "Old Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "New Password",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password_confirmation",
+                        "description": "Confirmation Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/auths/login": {
+            "post": {
+                "tags": [
+                    "Auths"
+                ],
+                "summary": "Login",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "email",
+                        "description": "Email",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "password",
+                        "description": "Password",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/auths/logout": {
+            "post": {
+                "tags": [
+                    "Auths"
+                ],
+                "summary": "Logout",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/auths/facebook": {
+            "post": {
+                "tags": [
+                    "Auths"
+                ],
+                "summary": "Login by Facebook",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "token",
+                        "description": "Access Token from Facebook",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/auths/gmail": {
+            "post": {
+                "tags": [
+                    "Auths"
+                ],
+                "summary": "Login by Gmail",
+                "parameters": [
+                    {
+                        "in": "formData",
+                        "name": "token",
+                        "description": "Access Token from Gmail",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/orders": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get orders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Orders"
+                ],
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "summary": "Create new order",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "name",
+                        "description": "Name Order",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "address",
+                        "description": "Address Order",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "pickup_at",
+                        "description": "Pickup At",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "images[0]",
+                        "description": "Order Images",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "images[1]",
+                        "description": "Order Images",
+                        "type": "file"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "images[2]",
+                        "description": "Order Images",
+                        "type": "file"
+                    }
+                ]
+            }
+        },
+        "/orders/{order_id}": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get order detail",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "type": "integer"
+                    }
+                ]
+            }
+        },
+        "/orders/pickups": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get orders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/orders/deliveries": {
+            "get": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Get orders",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/orders/{order_id}/picked": {
+            "put": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Order was Picked-up by Driver",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "type": "integer"
+                    }
+                ]
+            }
+        },
+        "/orders/{order_id}/delivered": {
+            "put": {
+                "tags": [
+                    "Orders"
+                ],
+                "summary": "Order was delivered",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Access Token",
+                        "type": "string"
+                    },
+                    {
+                        "name": "order_id",
+                        "in": "path",
+                        "description": "Order Id",
+                        "type": "integer"
+                    }
+                ]
+            }
+        },
+        "/reviews": {
+            "post": {
+                "tags": [
+                    "Reviews"
+                ],
+                "summary": "Create Review",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "rating",
+                        "description": "Rating star min 0, max 5",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "content",
+                        "description": "Content",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "formData",
+                        "name": "order_id",
+                        "description": "Order Id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ]
+            }
+        }
+    },
+    "definitions": {
+        "User": {
+            "type": "object",
+            "properties": {
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                }
+            }
+        }
+    }
+}
