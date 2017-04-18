@@ -18,7 +18,8 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1'], function()
     Route::put('orders/{id}/delivered', 'OrdersController@delivered')->middleware('auth', 'api.driver');
 
     // Review
-    Route::resource('reviews', ReviewsController::class, ['middleware' => ['auth']]);
+    Route::resource('symptoms', SymptomsController::class, ['middleware' => 'auth']);
+    Route::resource('diagnosis', DiagnosisController::class, ['middleware' => 'auth']);
 
     // Auths
     Route::group(['prefix' => 'auths'], function(){

@@ -29,7 +29,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
             {{ Session::get('success') }}
         </div>
         @endif
-        @include('adminlte::layouts.partials.contentheader')
 
         <section class="content">
             @yield('main-content')

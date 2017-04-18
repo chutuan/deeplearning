@@ -31,11 +31,6 @@ class UsersController extends BaseController
             $params['confirmation_code'] = User::generateConfirmationCode();
             $user = $this->repository->create($params);
 
-            // Send Email Confirmation
-            $when = \Carbon\Carbon::now()->addMinutes(1);
-            \Mail::to($user->email)
-                ->later($when, new EmailConfirmed($user));
-
             return $this->responseSuccess('Create Successfully', ['user' => $user->presenter()]);
         } catch(ValidatorException $e)
         {

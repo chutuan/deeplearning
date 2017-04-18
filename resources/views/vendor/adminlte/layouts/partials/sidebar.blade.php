@@ -33,22 +33,24 @@
         <ul class="sidebar-menu">
             <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <li class=""><a href="/admin"><i class='fa fa-link'></i> <span> {{ __('Dashboard') }}</span></a></li>
-            <li class="treeview {{ preg_match("/OrdersController/", \Route::getCurrentRoute()->getActionName()) ? "active" : "" }}">
-                <a href="#"><i class='fa fa-link'></i> <span>{{ __('Orders') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="/admin/orders">{{ __('All') }}</a></li>
-                    <li><a href="/admin/orders/pending-pickups">{{ __('Awaiting pick up confirmation') }}</a></li>
-                    <li><a href="/admin/orders/picking">{{ __('Ready for pick-up') }}</a></li>
-                    <li><a href="/admin/orders/cleaneds">{{ __('Picked-up') }}</a></li>
-                    <li><a href="/admin/orders/pending-deliveries">{{ __('Awaiting delivery confirmation') }}</a></li>
-                    <li><a href="/admin/orders/ready-delivery">{{ __('Ready for delivery') }}</a></li>
-                    <li><a href="/admin/orders/complete">{{ __('Complete') }}</a></li>
-                </ul>
-            </li>
             <li class="treeview {{ preg_match("/UsersController/", \Route::getCurrentRoute()->getActionName()) ? "active" : "" }}">
                 <a href="#"><i class='fa fa-link'></i> <span>{{ __('Users') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
                     <li><a href="/admin/users">{{ __('All') }}</a></li>
+                </ul>
+            </li>
+            <li class="treeview {{ preg_match("/SymptomsController/", \Route::getCurrentRoute()->getActionName()) ? "active" : "" }}">
+                <a href="#"><i class='fa fa-link'></i> <span>{{ __('Symptoms') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/symptoms">{{ __('List') }}</a></li>
+                    <li><a href="/admin/symptoms/create">{{ __('Create') }}</a></li>
+                </ul>
+            </li>
+            <li class="treeview {{ preg_match("/DiasgnosisController/", \Route::getCurrentRoute()->getActionName()) ? "active" : "" }}">
+                <a href="#"><i class='fa fa-link'></i> <span>{{ __('Diagnosis') }}</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="/admin/diagnosis">{{ __('List') }}</a></li>
+                    <li><a href="/admin/diagnosis/create">{{ __('Create') }}</a></li>
                 </ul>
             </li>
         </ul><!-- /.sidebar-menu -->

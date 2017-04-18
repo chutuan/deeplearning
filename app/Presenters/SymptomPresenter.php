@@ -4,11 +4,8 @@ namespace App\Presenters;
 use Prettus\Repository\Presenter\FractalPresenter;
 use League\Fractal\Serializer\ArraySerializer;
 
-class OrderPresenter extends FractalPresenter
+class SymptomPresenter extends FractalPresenter
 {
-    // protected $resourceKeyItem = 'order';
-    // protected $resourceKeyCollection = 'orders';
-
     public function __construct()
     {
         parent::__construct();
@@ -18,7 +15,7 @@ class OrderPresenter extends FractalPresenter
 
     public function getTransformer()
     {
-        return new \App\Transformers\OrderTransformer;
+        return new \App\Transformers\SymptomTransformer;
     }
 
 }

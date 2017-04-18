@@ -3,10 +3,10 @@ namespace App\Repositories;
 
 use Prettus\Repository\Eloquent\BaseRepository;
 
-class OrderImageRepository extends BaseRepository
+class SymptomRepository extends BaseRepository
 {
     protected $skipPresenter = true;
-    
+
     public function boot()
     {
         $this->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
@@ -14,16 +14,16 @@ class OrderImageRepository extends BaseRepository
 
     public function presenter()
     {
-        return \App\Presenters\OrderImagePresenter::class;
+        return \App\Presenters\SymptomPresenter::class;
     }
 
     public function  validator()
     {
-        return \App\Validators\OrderImageValidator::class;
+        return \App\Validators\SymptomValidator::class;
     }
 
     public function model()
     {
-        return \App\OrderImage::class;
+        return \App\Symptom::class;
     }
 }

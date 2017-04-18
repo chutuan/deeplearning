@@ -3,7 +3,7 @@
     "info": {
         "version": "1.02.22"
     },
-    "host": "117.3.36.11:8000",
+    "host": "localhost:8000",
     "basePath": "/api/v1",
     "tags": [
         {
@@ -15,12 +15,12 @@
             "description": "Everything about Authenticate"
         },
         {
-            "name": "Orders",
-            "description": "Everything about Order"
+            "name": "Symptoms",
+            "description": "Everything about Symptoms"
         },
         {
-            "name": "Reviews",
-            "description": "Everything about Review"
+            "name": "Diagnosis",
+            "description": "Everything about Diagnosis"
         }
     ],
     "schemes": [
@@ -224,200 +224,29 @@
                 ]
             }
         },
-        "/auths/gmail": {
+        "/symptoms": {
+            "get": {
+                "tags": [
+                    "Symptoms"
+                ],
+                "summary": "Get all Symptoms",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/diagnosis": {
             "post": {
                 "tags": [
-                    "Auths"
+                    "Diagnosis"
                 ],
-                "summary": "Login by Gmail",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "token",
-                        "description": "Access Token from Gmail",
-                        "required": true,
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/orders": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Get orders",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    }
-                ]
-            },
-            "post": {
-                "tags": [
-                    "Orders"
-                ],
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "summary": "Create new order",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "name",
-                        "description": "Name Order",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "address",
-                        "description": "Address Order",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "pickup_at",
-                        "description": "Pickup At",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "images[0]",
-                        "description": "Order Images",
-                        "required": true,
-                        "type": "file"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "images[1]",
-                        "description": "Order Images",
-                        "type": "file"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "images[2]",
-                        "description": "Order Images",
-                        "type": "file"
-                    }
-                ]
-            }
-        },
-        "/orders/{order_id}": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Get order detail",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "name": "order_id",
-                        "in": "path",
-                        "description": "Order Id",
-                        "type": "integer"
-                    }
-                ]
-            }
-        },
-        "/orders/pickups": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Get orders",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/orders/deliveries": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Get orders",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/orders/{order_id}/picked": {
-            "put": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Order was Picked-up by Driver",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "name": "order_id",
-                        "in": "path",
-                        "description": "Order Id",
-                        "type": "integer"
-                    }
-                ]
-            }
-        },
-        "/orders/{order_id}/delivered": {
-            "put": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Order was delivered",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "name": "order_id",
-                        "in": "path",
-                        "description": "Order Id",
-                        "type": "integer"
-                    }
-                ]
-            }
-        },
-        "/reviews": {
-            "post": {
-                "tags": [
-                    "Reviews"
-                ],
-                "summary": "Create Review",
+                "summary": "Diagnose",
                 "parameters": [
                     {
                         "in": "header",
@@ -428,24 +257,10 @@
                     },
                     {
                         "in": "formData",
-                        "name": "rating",
-                        "description": "Rating star min 0, max 5",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "content",
-                        "description": "Content",
+                        "name": "symptoms",
+                        "description": "List Value Symptoms. Ex: 1,2,3,4",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "in": "formData",
-                        "name": "order_id",
-                        "description": "Order Id",
-                        "required": true,
-                        "type": "integer"
                     }
                 ]
             }

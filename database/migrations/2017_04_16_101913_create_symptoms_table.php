@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateReviewsTable extends Migration
+class CreateSymptomsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function (Blueprint $table) {
+        Schema::create('symptoms', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('content')->nullable();
-            $table->float('rating')->default(0);
-            $table->integer('order_id');
+            $table->string('symptom_id')->nullable();
+            $table->integer('sort')->unsigned()->nullable();
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        Schema::dropIfExists('symptoms');
     }
 }
