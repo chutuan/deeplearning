@@ -18,11 +18,27 @@
                 </div>
                 <div class="form-group">
                   <label>Symptoms:</label>
-                  <input type="text" name="symptoms[]" class="form-control"
-                    style="margin: 5px 0px;"/>
+                  <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-9">
+                        <input type="text" name="symptoms[]" class="form-control"
+                          placeholder="Symptom"/>
+                      </div>
+                      <div class="col-md-3">
+                        <input type="text" name="values[]" class="form-control"
+                          placeholder="Value"/>
+                      </div>
+                    </div>
                   @foreach($symptom->symptoms()->orderBy('sort', 'ASC')->get() as $symptom)
-                    <input type="text" name="symptoms[]" class="form-control"
-                      value="{{ $symptom->content }}" style="margin: 5px 0px;"/>
+                    <div class="row" style="margin-bottom: 10px;">
+                      <div class="col-md-9">
+                        <input type="text" name="symptoms[]" class="form-control"
+                          value="{{ $symptom->content }}"/>
+                      </div>
+                      <div class="col-md-3">
+                        <input type="text" name="values[]" class="form-control"
+                          value="{{ $symptom->sort }}" placeholder="Value"/>
+                      </div>
+                    </div>
                   @endforeach
                 </div>
                 <button type="submit" class="btn btn-success">Update</button>

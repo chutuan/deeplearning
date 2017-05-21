@@ -42,15 +42,15 @@ class SymptomsController extends Controller
     $symptom = Symptom::find($id);
     $symptom->update($request->only('content'));
     $symptom->symptoms()->delete();
-    $index = 1;
-    foreach($request->get('symptoms') as $content)
+
+    $values = $request->get('values');
+    foreach($request->get('symptoms') as $index => $content)
     {
       if(empty($content))
       {
         continue;
       }
-      $symptom->symptoms()->create(['content' => $content, 'sort' => $index]);
-      $index++;
+      $symptom->symptoms()->create(['content' => $content, 'sort' => $values[$index]]);
     }
     \Session::flash('success', 'Update Successfully');
     return redirect("/admin/symptoms/{$symptom->id}/edit");

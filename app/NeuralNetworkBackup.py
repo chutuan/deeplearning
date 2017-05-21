@@ -3,7 +3,7 @@ from numpy import exp, array, random, dot
 class NeuralNetwork():
     def __init__(self):
         random.seed(1)
-        self.weights = 2 * random.random((3, 1)) - 1
+        self.weights = 2 * random.random((4, 1)) - 1
 
     def __sigmoid(self, x):
         # Ham chuan hoa
@@ -33,9 +33,9 @@ class NeuralNetwork():
 if __name__ == "__main__":
     neural_network = NeuralNetwork()
 
-    training_inputs = array([[1, 2, 3], [1, 2, 3], [1, 2, 3], [2, 3, 4]])
-    training_outputs = array([[1, 1, 1, 0.5]]).T
+    training_inputs = array([[1,2,3,4], [1,2,3,4], [1,2, 3, 4], [2, 3, 4, 4]])
+    training_outputs = array([[1, 1,1,0.5]]).T
 
-    neural_network.train(training_inputs, training_outputs, 10000)
+    neural_network.train(training_inputs, training_outputs, 30000)
 
-    print neural_network.think(array([2, 3, 4]))
+    print neural_network.think(array([2,3,4,4]))

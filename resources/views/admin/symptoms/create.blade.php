@@ -11,10 +11,14 @@
               <form method="POST" action="/admin/symptoms">
                 {{ csrf_field() }}
                 <div class="box-body">
-                  <div class="form-group">
-                    <label >Content</label>
-                    <input type="text" name="content" class="form-control">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label >Content</label>
+                      <input type="text" name="content" class="form-control">
+                    </div>
                   </div>
+                </div>
                 <div class="box-footer">
                   <button type="submit" class="btn btn-primary">Create</button>
                 </div>

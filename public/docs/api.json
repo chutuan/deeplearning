@@ -81,53 +81,6 @@
                 ]
             }
         },
-        "/users/verify": {
-            "put": {
-                "tags": [
-                    "Users"
-                ],
-                "summary": "Verify Email",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "name": "token",
-                        "in": "formData",
-                        "description": "Confirmation code",
-                        "type": "string"
-                    }
-                ]
-            }
-        },
-        "/users/change-avatar": {
-            "post": {
-                "tags": [
-                    "Users"
-                ],
-                "consumes": [
-                    "multipart/form-data"
-                ],
-                "summary": "Change Avatar",
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Access Token",
-                        "type": "string"
-                    },
-                    {
-                        "name": "avatar",
-                        "in": "formData",
-                        "description": "Avatar file",
-                        "type": "file"
-                    }
-                ]
-            }
-        },
         "/users/change-password": {
             "put": {
                 "tags": [
@@ -207,29 +160,29 @@
                 ]
             }
         },
-        "/auths/facebook": {
-            "post": {
-                "tags": [
-                    "Auths"
-                ],
-                "summary": "Login by Facebook",
-                "parameters": [
-                    {
-                        "in": "formData",
-                        "name": "token",
-                        "description": "Access Token from Facebook",
-                        "required": true,
-                        "type": "string"
-                    }
-                ]
-            }
-        },
         "/symptoms": {
             "get": {
                 "tags": [
                     "Symptoms"
                 ],
                 "summary": "Get all Symptoms",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "description": "Authorization",
+                        "required": true,
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        "/diagnosis/histories": {
+            "get": {
+                "tags": [
+                    "Diagnosis"
+                ],
+                "summary": "Get Diagnose Histories",
                 "parameters": [
                     {
                         "in": "header",

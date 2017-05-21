@@ -1,0 +1,21 @@
+{
+    "remotePath": "/public_html/wato",
+    "host": "crowdhardware.com",
+    "username": "crowdhar",
+    "password": "123crowd123",
+    "port": 21,
+    "protocol": "ftp",
+    "uploadOnSave": false,
+    "passive": false,
+    "debug": false,
+    "privateKeyPath": null,
+    "ignore": [
+        "\\.vscode",
+        "\\.git",
+        "\\.env",
+        "\\node_modules",
+        "\\vendor",
+        "\\storage",
+        "\\public\\data"
+    ]
+}

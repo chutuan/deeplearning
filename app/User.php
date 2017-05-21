@@ -32,10 +32,6 @@ class User extends Authenticatable implements Presentable
      *
      * @var array
      */
-    protected $hidden = [
-        'remember_token',
-    ];
-
     public function getPermitAttribute()
     {
         switch($this->role)
@@ -82,23 +78,35 @@ class User extends Authenticatable implements Presentable
         return $this->hasMany(\App\Order::class);
     }
 
+    public function diagnoseHistories()
+    {
+        return $this->hasMany(\App\DiagnoseHistory::class);
+    }
+
     public function isAdmin()
     {
         return $this->role === self::ROLE_ADMIN;
-    }
-
-    public function isDriver()
-    {
-        return $this->role === self::ROLE_DRIVER;
     }
 
     public function scopeGetRoles()
     {
         return [
             self::ROLE_CUSTOMER => __('Customer'),
-            self::ROLE_DRIVER => __('Driver'),
-            self::ROLE_MANAGER => __('Manager'),
             self::ROLE_ADMIN => __('Admin'),
         ];
+    }
+
+    public function getRememberToken()
+    {
+        return '';
+    }
+
+    public function setRememberToken($value)
+    {
+    }
+
+    public function getRememberTokenName()
+    {
+        return 'trash_attribute';
     }
 }

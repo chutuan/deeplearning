@@ -18,20 +18,8 @@
             </div>
         @endif
 
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="{{ trans('adminlte_lang::message.search') }}..."/>
-              <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <li class="header">{{ trans('adminlte_lang::message.header') }}</li>
             <li class=""><a href="/admin"><i class='fa fa-link'></i> <span> {{ __('Dashboard') }}</span></a></li>
             <li class="treeview {{ preg_match("/UsersController/", \Route::getCurrentRoute()->getActionName()) ? "active" : "" }}">
                 <a href="#"><i class='fa fa-link'></i> <span>{{ __('Users') }}</span> <i class="fa fa-angle-left pull-right"></i></a>

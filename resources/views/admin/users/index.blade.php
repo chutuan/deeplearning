@@ -22,18 +22,6 @@
                             </select>
                         </div>
                         <div class="col-md-3 form-group">
-                            <label>Email Confirmed</label>
-                            <select class="form-control" name="confirmed">
-                                <option value="">{{ __('All') }}</option>
-                                <option value="1" {{ "1" === $options['confirmed'] ? "selected" : ""}}>
-                                    {{ __('Confirmed') }}
-                                </option>
-                                <option value="0" {{ "0" === $options['confirmed'] ? "selected" : ""}}>
-                                    {{ __('Pending') }}
-                                </option>
-                            </select>
-                        </div>
-                        <div class="col-md-3 form-group">
                             <label style="display: block;">Action</label>
                             <button class="btn btn-success">Search</button>
                         </div>
@@ -46,8 +34,6 @@
                             <th style="width: 10px">#</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Email Confirmed</th>
-                            <th>Role</th>
                             <th>{{ __('Action') }}</th>
                         </tr>
                     </thead>
@@ -57,16 +43,6 @@
                             <td>{{ $index + 1 }}</td>
                             <td>{{ $user->fullName() }}</td>
                             <td>{{ $user->email }}</td>
-                            <td>
-                                @if($user->email_confirmed == 1)
-                                    <button class="btn btn-success btn-xs" disabled="true">Confirmed</button>
-                                @else
-                                    <button class="btn btn-danger btn-xs" disabled="true">Pending</button>
-                                @endif
-                            </td>
-                            <td>
-                                {{ $user->permit }}
-                            </td>
                             <td>
                                 <div class="row">
                                     <form action="/admin/users/{{ $user->id }}/role" method="POST">
